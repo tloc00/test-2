@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import './App.css'
 import { useCallback, useState } from "react";
 import words from 'an-array-of-english-words';
 import { GUESS_TYPE, LETTER_STATE, StatusResponse, WORD_COLOR } from './types';
-import { API_PATH, BASE_URL, COLOR_WHITE, DEFAULT_SIZE, MIN_SIZE, MIN_SEED, MAX_SIZE } from "./constants";
+import { API_PATH, BASE_URL, COLOR_WHITE, DEFAULT_SIZE, MIN_SIZE, MIN_SEED, MAX_SIZE, ALL_LETTER } from './constants';
 
 const App = () => {
   const [guessType, setGuessType] = useState(GUESS_TYPE.GUESS_RANDOM);
@@ -158,11 +159,10 @@ const App = () => {
     }, [guessType, seed, size, word])
   
     const handleGuessNotInEnglishDictionary = useCallback(async (wordSize: number, absentLetters: Set<string>, currentWordGuessList: any[], count: {value: number}) => {
-      const allLetter = "abcdefghijklmnopqrstuvwxyz";
       const correctLetters = new Array(wordSize).fill("");
       let correctWord = "";
       let countGuess = 0;
-      for(const letter of allLetter){
+      for(const letter of ALL_LETTER){
         console.log("correctLetters", JSON.stringify(correctLetters));
         if(absentLetters.has(letter)){
           continue;

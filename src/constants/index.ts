@@ -1,3 +1,4 @@
+export const ALL_LETTER = "abcdefghijklmnopqrstuvwxyz";
 export const DEFAULT_SIZE = 5;
 export const BASE_URL = "https://wordle.votee.dev:8000";
 export const API_PATH = {
